@@ -60,4 +60,11 @@ such that:
  on a sheet of graph paper.
  (A sheet of graph paper is R^2!)
  We can say that (2.5, 2.7) is a representative (or proxy) of the 4D point (1, 2, 3, 4).
+ Or we depict the 4D point (1, 2, 3, 4) as the 2D point (2.5, 2.7).
+ 
+ Recall that in the previous section we discussed that maps (or atlases or charts) are good examples of
+ visualization.
+ We can construct an analogy:
+ The 4D point (1, 2, 3, 4) is similar to, say, a section of the Rocky Mountain.
+ The 2D point (2.5, 3.5) is similar to depiction, on a map, of that section of the Rocky Mountain.
  
