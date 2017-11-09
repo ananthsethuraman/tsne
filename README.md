@@ -15,7 +15,7 @@ That is a good example of visualization.
 Visualization means depicting a geometrical figure that is not two-dimensional as two-dimensional,
 then drawing this two-dimensional depiction on paper, or on a computer screen.
 
-## Mathematical Statement of the Visualization Problem
+## The Visualization Problem in the Context of a .csv File
 
 We are given a .csv file, such as this one:
 
@@ -25,14 +25,7 @@ We are given a .csv file, such as this one:
     7    8    9    6
     5    6    4    9
     
-The .csv file above has 4 columns.
-Let us denote the number of columns as n; in our example, n = 4.
-We will suppose that n is a given integer > 2.
-Why should n > 2?
-If n <=2 there is no need for a special visualization algorithm---we can directly plot the columns in the XY plane!
-The need for a visualization algorithm arises only if n > 2.
-
-In the example above there are 5 rows.
+The .csv file above has 4 columns and 5 rows.
 The objective of the visualization algorithm is to generate 5x2 = 10 numbers,
 
     y11    y12
@@ -68,3 +61,31 @@ such that:
  The 4D point (1, 2, 3, 4) is similar to, say, a section of the Rocky Mountain.
  The 2D point (2.5, 3.5) is similar to depiction, on a map, of that section of the Rocky Mountain.
  
+## Abstract Statement of the Visualization Problem
+
+Let our .csv file house m points in R^n,
+
+    x1, x2, x3, ..., xm
+    
+The quantities m and n are given positive integers.
+We can expect n to be large.
+
+The visualization algorithm needs to compute m points in R^2,
+
+    y1, y2, y3, ..., ym
+
+Our intention is that a computer package will depict the points
+
+    y1, y2, y3, ..., ym
+    
+on a computer screen; we will consider
+
+    y1 to be the depiction of x1
+    y2 to be the depiction of x2
+    y3 to be the depiction of x3
+    ............................
+    ............................
+    ym to be the depiction of xm
+    
+## Desired Characteristics of the y's
+
