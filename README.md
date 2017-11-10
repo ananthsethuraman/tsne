@@ -87,5 +87,40 @@ on a computer screen; we will consider
     ............................
     ym to be the depiction of xm
     
-## Desired Characteristics of the y's
+## Desired Trade-off in Our Visualization Algorithm
 
+Consider the following sentences:
+
+    Sentence 1 : x2 is close to x1, and x3 is even more close
+    
+    Sentence 2 : x12 is far from x11, and x13 is even more far
+
+Ideally, our visualization algorithm should compute the y's such that the following sentences are correct:
+
+    Sentence 3 : y2 is close to y1, and y3 is even more close (Please see Sentence 1)
+    
+    Sentence 4 : y12 is far from y11, and y13 is even more far (Please see Sentence 2)
+    
+Experience suggests that visualization algorithms find it hard to make both Sentences 3 and 4 correct.
+There seems to be a trade-off: a visualization algorithm can compute the y's such that Sentence 3 is
+correct, but Sentence 4 is (in general) not correct.
+In the alternative, a visualization algorithm can compute the y's such that Sentence 4 is correct, but
+Sentence 3 is (in general) not correct.
+Computing the y's such that both Sentences 3 and 4 are correct seems to be too hard a thing to do.
+
+tSNE picks the former.
+That is to say, tSNE depicts the relationship of "is close to" with a fair amount of fidelty.
+tSNE does not (in general) depict the relationship of "is far from" with fidelity.
+
+Perhaps an analogy can help.
+Let us look at the US as a 3D geometrical figure.
+In this 3D geometrical figure, the 48 states are clustered together.
+Next, let us look at a map of the US; in that map, the US is depicted as a 2D figure.
+In the 2D figure (i.e., in the map), the 48 states are clustered together.
+That is to say, the map depicts the relationship of "are clustered together" with fidelity.
+
+Let us sum up the points we have been makinng.
+The tSNE algorithm depicts the relationship "is close to" with fidelity;
+a map depicts the relationship of "are clustered together" with fidelity.
+Now the phrases "is close to" and "are clustered together" are pretty nearly the same thing.
+So we see that tSNE behaves somewhat like a map.
