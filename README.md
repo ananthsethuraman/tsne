@@ -112,7 +112,8 @@ tSNE picks the former.
 That is to say, tSNE depicts the relationship of "is close to" with a fair amount of fidelty.
 tSNE does not (in general) depict the relationship of "is far from" with fidelity.
 
-Perhaps an analogy can help.
+## tSNE is Similar to a Map
+
 Let us look at the US as a 3D geometrical figure.
 In this 3D geometrical figure, the 48 states are clustered together.
 Next, let us look at a map of the US; in that map, the US is depicted as a 2D figure.
