@@ -63,18 +63,17 @@ such that:
  
 ## Abstract Statement of the Visualization Problem
 
-Let our .csv file house m points in R^n,
+Two positive integers m and n are given.
+We can expect n to be large.
+A .csv file is given; it houses m points in R^n,
 
     x1, x2, x3, ..., xm
     
-The quantities m and n are given positive integers.
-We can expect n to be large.
-
 The visualization algorithm needs to compute m points in R^2,
 
     y1, y2, y3, ..., ym
 
-Our intention is that a computer package will depict the points
+We expect that a computer package will depict the points
 
     y1, y2, y3, ..., ym
     
@@ -109,8 +108,21 @@ Sentence 3 is (in general) not correct.
 Computing the y's such that both Sentences 3 and 4 are correct seems to be too hard a thing to do.
 
 tSNE picks the former.
-That is to say, tSNE depicts the relationship of "is close to" with a fair amount of fidelty.
-tSNE does not (in general) depict the relationship of "is far from" with fidelity.
+That is to say, tSNE depicts the relationship of "is close to" with a considerable amount of fidelty.
+tSNE depicts the relationship of "is far from" with only a small amount of fidelity.
+
+## Precaution
+
+In the last paragraph, the phrase "only a small amount of fidelity" needs to be undersood carefully.
+Suppose that x2 and x3 are far away from x1.
+We would expect y2 and y3 to be far away from y1.
+It would be glaring mistake if either y2 or y3 were close to y1.
+tSNE will not make that sort of glaring mistake.
+
+Nevertheless, tSNE will lose some fine-level detail concerning x2 and x3.
+For example, suppose that distance between x1 and x3 is 10 times the distance between x1 and x2.
+tSNE could compute the y's such that the distance between y1 and y3 could be be only 1.5 times
+the distance between y1 and y2.
 
 ## tSNE is Similar to a Map
 
