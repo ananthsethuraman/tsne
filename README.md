@@ -136,7 +136,7 @@ Let us sum up the points we have been makinng.
 The tSNE algorithm depicts the relationship "is close to" with fidelity;
 a map depicts the relationship of "are clustered together" with fidelity.
 Now the phrases "is close to" and "are clustered together" are pretty nearly the same thing.
-So we see that tSNE behaves somewhat like a map.
+We see that tSNE behaves somewhat like a map.
 
 ## Bringing Probability into the Picture
 
@@ -145,8 +145,6 @@ of probability theory can play a role.
 We will make the same move now.
 That is to say, we will restate the problem statement using phrases like "experiment", "outcome",
 "event" and "probability mass function".
-This way of restating allows us to use cross-entropy (or the Kullback-Leibner divergence) as
-a cost function (or as a loss function or as an objective function that needs to be optimized)
 
 First we need to descrbe what our experiments and what our outcomes are going to be.
 
@@ -161,16 +159,16 @@ The possible answers (or candidate answers) are:
     
 We will term the act of asking this question an experiment.
 We can even name this experiment as Ex1.
-The outcomees of this experiment Ex1 are the the possible answers or candidate answers listed above.
+The outcomes of this experiment Ex1 are the the possible answers or candidate answers listed above.
 
 We can make up many more experiments of the same sort.
 For example, the following could be an experiment named Ex2:
 
-    _Question (i.e. Experiment Ex2)_
+    _Experiment Ex2, i.e., a question concerning x2_
     
     Let us pick the point x2.  Of the other x's which is nearest to x2?
     
-    _Possible answers (or candidate answers)_
+    _Outcomes of Ex2, i.e., possible answers or candidate answers to the question above_
     
     x1
     x3
@@ -180,15 +178,14 @@ For example, the following could be an experiment named Ex2:
     
 Here is another experiment:
 
-    _Question (i.e. Experiment Ey1)_
+    _Experiment Ey1, i.e., a question concerning y1_
     
     Let us pick the point y1.  Of the other y's which is nearest to y1?
     
-    _Possible answers (or candidate answers)_
+    _Outcomes of Ex2, i.e., possible answers or candidate answers to the question above_
     
     y2
     y3
     ..
     ym
-    
-The 
+ 
