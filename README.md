@@ -114,15 +114,15 @@ tSNE depicts the relationship of "is far from" with only a small amount of fidel
 ## Precaution
 
 In the last paragraph, the phrase "only a small amount of fidelity" needs to be undersood carefully.
-Suppose that x2 and x3 are far away from x1.
-We would expect y2 and y3 to be far away from y1.
-It would be glaring mistake if either y2 or y3 were close to y1.
+Suppose that x12 and x13 are far away from x11.
+We would expect y12 and y13 to be far away from y11.
+It would be glaring mistake if either y12 or y13 were close to y11.
 tSNE will not make that sort of glaring mistake.
 
-Nevertheless, tSNE will lose some fine-level detail concerning x2 and x3.
-For example, suppose that distance between x1 and x3 is 10 times the distance between x1 and x2.
-tSNE could compute the y's such that the distance between y1 and y3 could be be only 1.5 times
-the distance between y1 and y2.
+Nevertheless, tSNE will lose some fine-level detail concerning x12 and x13.
+For example, suppose that distance between x11 and x13 is 10 times the distance between x11 and x12.
+tSNE could compute the y's such that the distance between y11 and y13 could be be only 1.5 times
+the distance between y11 and y12.
 
 ## tSNE is Similar to a Map
 
@@ -137,3 +137,58 @@ The tSNE algorithm depicts the relationship "is close to" with fidelity;
 a map depicts the relationship of "are clustered together" with fidelity.
 Now the phrases "is close to" and "are clustered together" are pretty nearly the same thing.
 So we see that tSNE behaves somewhat like a map.
+
+## Bringing Probability into the Picture
+
+In machine learning, it is common practice to restate a problem statement such that concepts
+of probability theory can play a role.
+We will make the same move now.
+That is to say, we will restate the problem statement using phrases like "experiment", "outcome",
+"event" and "probability mass function".
+This way of restating allows us to use cross-entropy (or the Kullback-Leibner divergence) as
+a cost function (or as a loss function or as an objective function that needs to be optimized)
+
+First we need to descrbe what our experiments and what our outcomes are going to be.
+
+Let us take any one of the x's, say, x1.
+Let us ask the question, "Of the other x's, which is the nearest to x1?"
+The possible answers (or candidate answers) are:
+
+    x2 is nearest to x1
+    x3 is nearest to x1
+    ...................
+    xm is nearest to x1
+    
+We will term the act of asking this question an experiment.
+We can even name this experiment as Ex1.
+The outcomees of this experiment Ex1 are the the possible answers or candidate answers listed above.
+
+We can make up many more experiments of the same sort.
+For example, the following could be an experiment named Ex2:
+
+    _Question (i.e. Experiment Ex2)_
+    
+    Let us pick the point x2.  Of the other x's which is nearest to x2?
+    
+    _Possible answers (or candidate answers)_
+    
+    x1
+    x3
+    x4
+    ..
+    xm
+    
+Here is another experiment:
+
+    _Question (i.e. Experiment Ey1)_
+    
+    Let us pick the point y1.  Of the other y's which is nearest to y1?
+    
+    _Possible answers (or candidate answers)_
+    
+    y2
+    y3
+    ..
+    ym
+    
+The 
