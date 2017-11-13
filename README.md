@@ -142,6 +142,9 @@ We see that tSNE behaves somewhat like a map.
 
 In machine learning, it is common practice to restate a problem statement such that concepts
 of probability theory can play a role.
+In particular, letting probability play a role will allow us to transform a problem into an
+optimization problem with cross-entropy as an objective function.
+
 We will make the same move now.
 That is to say, we will restate the problem statement using phrases like "experiment", "outcome",
 "event" and "probability mass function".
@@ -189,3 +192,107 @@ Here is another experiment:
     ..
     ym
  
+## An Idea for a Probability Mass Distribution
+
+Thus far we have described experiments named
+
+    Ex1, Ex2, Ex3, ..., Exm
+    Ey1, Ey2, Ey3, ..., Eym
+    
+We have also described the outcomes of each of these experiment.
+But we have not spoken of a probability mass distribution yet.
+Let us turn to that.
+
+As an example, take the experiment Ex1.
+In Ex1, the question is "What is x that is closest to x1?"
+And the possible outcomes are x2, x3, x4, ..., xm.
+So far, so good.
+
+Let us use the following notation:
+
+    || x2 - x1 || = distance between x2 and x1
+    || x3 - x1 || = distance between x2 and x1
+    || x4 - x1 || = distance between x2 and x1
+    ..........................................
+    || xm - x1 || = distance between x2 and x1
+    
+Could these distances be quoted as the probability mass distribution?
+That is to say, is it valid to quote that:
+
+    probability that Ex1's outcome is x2 = || x2 - x1 ||
+    probability that Ex1's outcome is x3 = || x3 - x1 ||
+    probability that Ex1's outcome is x4 = || x4 - x1 ||
+    ....................................................
+    probability that Ex1's outcome is xm = || xm - x1 ||
+    
+## Objections to the Foreging Idea
+
+There are three objections to the foregoing idea for a probability mass distribution.
+
+First, a probability must be a number between 0 and 1; there is no assurance that distances like
+
+    ||x2 - x1||, ||x3 - x1||, ||x4 - x1||, ..., ||xm - x1||
+    
+are numbers between 0 and 1.  They could easily greater than 1.
+
+Second, the sum of all the probabilities in a probability mass distribution is 1; there is no
+assurance that the sum
+
+    ||x2 - x1|| + ||x3 - x1|| + ||x4 - x1|| + ... + ||xm - x1|| = 1
+    
+Third, the distances
+
+    ||x2 - x1||, ||x3 - x1||, ||x4 - x1||, ..., ||xm - x1||
+    
+are not normalized.  In one application, the x's may have the interpretation of being lengths in
+inches; in another application, the x's may have the interpretation of being weights in pounds;
+in yet another application, the x's may have the interpretation of being money in USD; and so on.
+
+## How to Normalize
+
+We will deal with the third objection first.
+
+We will introduce a parameter sigma1.
+This sigma1 will be a length in inches, if the x's are lengths in inches; sigma1 will be a
+weight in pounds, if the x's are weights in pounds; sigma1 will be money in USD, if the x's are
+money in USD; and so on.
+Therefore the quantities
+
+    ||x2 - x1||, ||x3 - x1||, ||x4 - x1||, ..., ||xm - x1||
+    -----------  -----------  -----------       -----------
+       sigma1       sigma1       sigma1            sigma1
+       
+will be non-dimensional.
+Still, there is a problem.
+What is the actual numerical value of sigma1 going to be?
+Further, who is responsible for computing sigma1--the user or the tSNE algorithm?
+
+In fact, it is the tSNE algorithm that computes sigma1.
+The way it computes sigma1 is somewhat heuristic in nature.
+The value of sigma1 is chosen such that some 7-50 of the distances
+
+    ||x2 - x1||, ||x3 - x1||, ||x4 - x1||, ..., ||xm - x1||
+    
+are comparable or smaller than sigma1.
+The intuition is that if || xi - x1 || is a good bit greater than sigma1, then
+xi has a poor probability of being picked as the outcome of the experiment Ex1, i.e.,
+xi has a poor probability of being picked as the x that is closest to x1.
+
+The previous paragraph contained the sentence
+
+    "The value of sigma1 is chosen such that some 7-50 of the distances ..."
+    
+This raises a question.  Should it be 7?  Or 50?  Or some number between 7 and 50, e.g., 28?
+
+The author of tSNE says that the visualization generated is about the same whether it is 7,
+or 50 or 28.
+
+On the other hand, a paper by Cao and Wang suggest that it does matter, and further, their
+paper offers an automatic way of picking whether it should be 7, 50, 28, 64, 128 or some other
+number.
+
+Whatever the number that is picked--be it 7, 50, 28, 64, 128 or some other number--that number
+is termed the perplexity.
+Perplexity is termed a tunable parameter, or a knob or a hyperparameter.
+
+
