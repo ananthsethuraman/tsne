@@ -295,4 +295,66 @@ Whatever the number that is picked--be it 7, 50, 28, 64, 128 or some other numbe
 is termed the perplexity.
 Perplexity is termed a tunable parameter, or a knob or a hyperparameter.
 
+## Softmax Function
 
+We can now deal with the first and second objections.
+To this end, we use the softmax function.
+With the softmax function we can write the probablity mass distribution of the
+experiment Ex1 in this way:
+
+    probability that Ex1's outcome is x2 = softmax ( || x2 - x1 || / sigma1 )
+    probability that Ex1's outcome is x3 = softmax ( || x3 - x1 || / sigma1 )
+    probability that Ex1's outcome is x4 = softmax ( || x4 - x1 || / sigma1 )
+    .........................................................................
+    probability that Ex1's outcome is xm = softmax ( || xm - x1 || / sigma1 )
+    
+ In the same way, the probability mass distribution of the experiment Ex2 would be:
+
+    probability that Ex2's outcome is x1 = softmax ( || x1 - x2 || / sigma2 )
+    probability that Ex2's outcome is x3 = softmax ( || x3 - x2 || / sigma2 )
+    probability that Ex2's outcome is x4 = softmax ( || x4 - x2 || / sigma2 )
+    .........................................................................
+    probability that Ex2's outcome is xm = softmax ( || xm - x2 || / sigma2 )
+    
+ In the same way, the probability mass distribution of the experiment Exm would be:
+
+    probability that Exm's outcome is x1 = softmax ( || x1 - xm || / sigmam )
+    probability that Exm's outcome is x2 = softmax ( || x2 - xm || / sigmam )
+    probability that Exm's outcome is x3 = softmax ( || x3 - xm || / sigmam )
+    .........................................................................
+    probability that Exm's outcome is x{m-1} = softmax ( || x_{m-1} - xm || / sigmam )
+    
+## Probability Mass Distribution of Ey1, Ey2, ... Eym
+
+Recall that the parameters sigma1, sigma2, sigma3, ..., sigmam serve to normalize the distances between the x's.
+In the same way, we should introduce additional parameters tau1, tau2, tau3, ..., taum in order to normailize the distances between the y's.
+On this ground, then, the probability mass distribution of the experiment Ey1 would be:
+
+    probability that Ey1's outcome is y2 = softmax ( || y2 - y1 || / tau1 )
+    probability that Ey1's outcome is y3 = softmax ( || y3 - y1 || / tau1 )
+    probability that Ey1's outcome is y4 = softmax ( || y4 - y1 || / tau1 )
+    .........................................................................
+    probability that Ey1's outcome is ym = softmax ( || ym - y1 || / tau1 )
+    
+So far, so good.
+
+Now recall that the parameter sigma1 was determined by a concept named perplexity.
+That is to say, tSNE would determine sigma1 such that the number of x's that are close to x1 would be 7-50.
+Does tSNE have something similar in order to determine tau1?
+It turns out that nothing this complicated is necessary?
+Rather, tSNE can set tau1 to 1 by fiat.
+Furthermore, it can compute the y' such that the distances between the y's are on the order of 1.
+This is because a visualization algorithm is invariant to scaling in the following sense:
+Consider the following three sets:
+
+    A = { y1, y2, y3, ..., ym}
+    B = { 10y1, 10y2, 10y3, ..., 10ym}
+    C = { 100y1, 100y2, 100y3, ..., 100ym}
+    
+Let a software package depict A on one computer screen, depict B on a second computer screen and depict C on a third computer screen.
+The pictures on the three computer screens will look the same, apart from scaling.
+That is to say, B will look like A, magnified by a factor 10.
+C will also look A, magnified by a factor 100.
+
+This is the reason tau1 can be set a priori to 1.
+Similarly, tau2, tau3, tau4, ..., taum can all be set a priori to 1.
