@@ -416,3 +416,56 @@ The newer proposal has probabilities like these for Ey1:
     probability that Ey1's outcome is y4 = 1 / {1 + ( || y4 - y1 || / tau1 ) }
     ..........................................................................
     probability that Ey1's outcome is ym = 1 / {1 + ( || ym - y1 || / tau1 ) }
+    
+The new proposal is a Cauchy distribution or a Student t distribution with one degree of freedom.
+
+## Why Do We Want This Newer Proposal?
+
+In this section, we will temporarily forget our notation, and use a new notation: x, y and z will
+be real variables.
+The new notation is in accord with textbooks of analytical (or coordinate) geometry.
+
+Consider these two circles in R^2:
+
+    Circle C1: x^2 + y^2 = 0.50^2
+    Circle C2: x^2 + y^2 = 1.00^2
+
+Also consider these two spheres in R^3:
+
+    Sphere S1: x^2 + y^2 + z^2 = 0.50^2
+    Sphere S2: x^2 + y^2 + z^2 = 1.00^2
+
+The area of the circle C1 is (pi)(0.50)^2 = 0.25pi
+The area of the circle C2 is (pi)(1.00)^2 = 1.00pi
+
+Now
+
+    0.25pi
+    ------ x 100 = 25%
+    1.00pi
+    
+That is to say, C2's inner half contributes 25% to the area.
+C2's outer half contributes the remaining 75%.
+
+Let's make a similar calculation for the spheres in R^3.
+The analog of the circle C1 would be the sphere S1.
+The analog of the circle C2 would be the sphere S2.
+
+The volume of S1 is (4/3)(pi)(0.50)^3 = (4/3)(pi)(0.125)
+The volume of S2 is (4/3)(pi)(1.00)^3 = (4/3)(pi)(1.000)
+
+Now
+
+    (4/3)(pi)(0.125)
+    ---------------- x 100 = 12.5%
+    (4/3)(pi)(1.000)
+    
+That is to say, S2's inner half contributes 12.5% to the volme.
+S2's outer half must contribute the remaining 87.5%.
+
+Now 75% < 87.5%.
+That is to say, C2's outer half contributes less to C2 than the S2's outer half contributes to S2.
+Or C2's outer half is less roomy than S2's outer half.
+
+The rule is that the lower the space's dimension, the less roomy is the outer half.
+It is for this reason the authors of tSNE decided not to stick with the older proposal.
