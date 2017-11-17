@@ -469,3 +469,32 @@ Or C2's outer half is less roomy than S2's outer half.
 
 The rule is that the lower the space's dimension, the less roomy is the outer half.
 It is for this reason the authors of tSNE decided not to stick with the older proposal.
+
+(Aside: This article uses the word "roomy".  The opposite of "roomy" is "crowded".  The authors of tSNE use "crowded" or "crowding" in their papers.)
+
+Still, there is a question.
+Why did the authors pick the Cauchy distribution (or the Student t distribution with 1 degree of freedom)?
+Suppose that x23 is near the origin, and x24 is far from the origin in the high-dimensional space.
+Then y23 ought to be near the origin, and y24 far from the origin in the low-dimension space, namely, R^2
+
+But, as mentioned above, the outer half in a low-dimensional space (i.e., R^2) is not roomy.
+Therefore y24 must be positioned, not just far from the origin of R^2, but very, very far from the origin!
+
+Notice that tSNE is causing a kind of distortion: x24 is merely far away from the origin of the high-dimensional space, but y24 is very, very far away!
+Such distortions happen in maps (or atlases or charts) as well.
+For example, Greenland is depicted almost as big as Africa on a map.
+In reality, Greenland is much smaller than Africa.
+But a map distorts Greenland, such that Greenland is almost as big as Africa.
+tSNE causes the same kind of distortion of far-away points.
+Only the far-away points get distorted--tSNE is good with points that are near the origin.
+
+So in R^2, y23 and y24 are very, very far away.
+Consider now the expression given in the older proposal:
+
+    probability that Ey23's outcome is y24 = softmax ( || y24 - y23 || / tau1 )
+    
+Because the softmax contains an exponential function with a negative argument, the probablity above will be unusually small, much smaller than the corresponding probability in the experiment Ex23 (i.e., the high-dimensional space's equivalent to Ey23).
+
+So we want to use a different probability distribution that doesn't decay so rapidly when the argument is large.
+Or, in the terminology of statistics, we want a "heavy-tailed distribution."
+This is what the Cauchy distribution is--a heavy-tailed distribution, or a function that doesn't decay very rapidly when the argument is large.
