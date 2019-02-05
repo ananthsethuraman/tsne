@@ -26,30 +26,30 @@ We are given a .csv file, such as this one:
     5    6    4    9
     
 The .csv file above has 4 columns and 5 rows.
-The objective of the visualization algorithm is to generate 5x2 = 10 numbers,
+The objective of the visualization algorithm is to generate a seocond .csv file with 2 columns and 5 rows, like so:
 
-    y11    y12
-    y21    y22
-    y31    y32
-    y41    y42
-    y51    y52
+    y1,1    y1,2
+    y2,1    y2,2
+    y3,1    y3,2
+    y4,1    y4,2
+    y5,1    y5,2
 
 such that:
 
-    the pair (y11, y12) is in some sense a representative (or proxy) for the 1st row of the .csv file
-    the pair (y21, y22) is in some sense a representative (or proxy) for the 2nd row of the .csv file
-    the pair (y31, y32) is in some sense a representative (or proxy) for the 3rd row of the .csv file
-    the pair (y41, y42) is in some sense a representative (or proxy) for the 4th row of the .csv file
-    the pair (y51, y52) is in some sense a representative (or proxy) for the 5th row of the .csv file
+    the pair (y1,1, y1,2) is in some sense a representative (or proxy) for the 1st row of the .csv file
+    the pair (y2,1, y2,2) is in some sense a representative (or proxy) for the 2nd row of the .csv file
+    the pair (y3,1, y3,2) is in some sense a representative (or proxy) for the 3rd row of the .csv file
+    the pair (y4,1, y4,2) is in some sense a representative (or proxy) for the 4th row of the .csv file
+    the pair (y5,1, y5,2) is in some sense a representative (or proxy) for the 5th row of the .csv file
     
  What do we mean by the phrase "in some sense a representative (or proxy)"?
- Recall that the first row is a point in R^4, (1, 2, 3, 4).
+ Recall that the first row the given .csv file is a point in R^4, (1, 2, 3, 4).
  It is not possible to draw a 4D point.
- Now let us turn to the pair (y11, y12), which is described as being a representative (or proxy).
- (y11, y12) is a point in R^2.
- We can certainly mark a point (y11, y12) in R^2, provided, of course, our algorithm has computed the
- values of y11 and y12.
- For example, if our algorithm has computed that y11 = 2.5, y12 = 2.7, we can mark the point (2.5, 2.7)
+ Now let us turn to the pair (y1,1, y1,2), which is described as being a representative (or proxy).
+ (y1,1, y1,2) is a point in R^2.
+ We can certainly mark a point (y1,1, y1,2) in R^2, provided, of course, our algorithm has computed the
+ values of y1,1 and y1,2.
+ For example, if our algorithm has computed that y1,1 = 2.5, y1,2 = 2.7, we can mark the point (2.5, 2.7)
  on a sheet of graph paper.
  (A sheet of graph paper is R^2!)
  We can say that (2.5, 2.7) is a representative (or proxy) of the 4D point (1, 2, 3, 4).
@@ -65,7 +65,7 @@ such that:
 
 Two positive integers m and n are given.
 We can expect n to be large.
-A .csv file is given; it houses m points in R^n,
+A .csv file is given with m rows and n columns. Each row is a point in R^n. The m rows are m points in R^n,
 
     x1, x2, x3, ..., xm
     
